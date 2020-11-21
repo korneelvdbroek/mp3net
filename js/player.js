@@ -9,7 +9,7 @@ class Player {
 
         this.player = this.container.querySelector('audio')
         this.demo_img = this.container.querySelector('.underlay > img')
-        this.overlay = this.container.querySelector('.overlay')
+        this.underlay = this.container.querySelector('.underlay')
         this.playpause = this.container.querySelector(".playpause");
         this.play_img = this.container.querySelector('.play-img')
         this.pause_img = this.container.querySelector('.pause-img')
@@ -31,22 +31,18 @@ class Player {
 
         this.update = () => {
             this.global_frac = this.player.currentTime / this.player.duration
-            // this.global_frac = frac
-            // console.log(this.player.currentTime, this.player.duration, this.global_frac)
-            this.overlay.style.width = (100*(1.0 - this.global_frac)).toString() + '%'
+
+            // set cropping position of image
+            this.cropImage(this.global_frac)
+
+            // draw spectrogram in player
             this.redraw()
         }
 
-        // var start = null;
         this.updateLoop = (timestamp) => {
-            // if (!start) start = timestamp;
-            // var progress = timestamp - start;
             this.update()
-            // this.progress = setTimeout(this.updateLoop, 10)
             this.progress = window.requestAnimationFrame(this.updateLoop)
         }
-
-
 
         this.playpause.disabled = true
         this.player.onplay = this.updateLoop
@@ -67,7 +63,7 @@ class Player {
         this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
         this.player.load()
         this.demo_img.setAttribute("src", img_fname)
-        this.overlay.style.width = '0%'
+        this.cropImage(0)
 
         fetch(img_fname)
           .then(response => response.arrayBuffer())
@@ -155,5 +151,14 @@ class Player {
             this.context.fillStyle = '#696f7b';
             this.context.fillRect(k*(bar_width + 1), (this.canvas.height - height) / 2, bar_width, height);
         }
+    }
+
+    cropImage(global_frac) {
+        this.imageRescalingFactor = this.demo_img.height / this.demo_img.naturalHeight
+        this.imageFullWitdh = this.imageRescalingFactor * this.demo_img.naturalWidth
+        this.objectPositionStart = this.underlay.offsetWidth / 2.
+        this.objectPositionEnd = -this.imageFullWitdh + this.underlay.offsetWidth / 2.
+
+        this.demo_img.style.objectPosition = (global_frac * (this.objectPositionEnd - this.objectPositionStart) + this.objectPositionStart).toString() + 'px 0%'
     }
 }

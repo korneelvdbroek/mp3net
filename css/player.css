@@ -87,18 +87,20 @@
     position: absolute;
     top: 0;
     left: 0;
+    background-color: #000000;
 }
 
-.overlay{
-    width: 0%;
+.underlay img {
+    object-fit: cover;
+    object-position: 0% 0%;
+}
+
+.overline {
+    width: 50%;
     height:100%;
     top: 0;
-    right: 0px;
-
-    background:rgba(242, 245, 248, 0.7);
-    overflow:hidden;
+    border-right: thin solid rgba(242, 0, 0, 0.7);
+    overflow: hidden;
     position: absolute;
     z-index: 10;
-
-    position: absolute;
 }
