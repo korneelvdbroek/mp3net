@@ -117,7 +117,6 @@
         var img_fname = "samples/" + select_sample.value + ".png"
         p3.load(audio_fname, img_fname)
     }
-    select_text.addEventListener('change', update3)
-    select_speaker.addEventListener('change', update3)
+    select_sample.addEventListener('change', update3)
     window.addEventListener("resize", function() {p3.redraw()})
 </script>
