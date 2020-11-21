@@ -37,7 +37,7 @@
                     <div class='controls'>
                         <p>
                             Speaker:
-                            <select id='select-speaker'>
+                            <select id='select-sample'>
                               <option value="sample-0">Sample 1</option>
                               <option value="sample-1">Sample 2</option>
                             </select>
@@ -110,12 +110,11 @@
     var p3 = new Player('player-3')
     p3.load('samples/sample-0', 'samples/sample-0.png')
 
-    var select_text = document.querySelector('#select-text')
-    var select_speaker = document.querySelector('#select-speaker')
+    var select_sample = document.querySelector('#select-sample')
 
     function update3() {
-        var audio_fname = "samples/" + select_speaker.value
-        var img_fname = "samples/" + select_speaker.value + ".png"
+        var audio_fname = "samples/" + select_sample.value
+        var img_fname = "samples/" + select_sample.value + ".png"
         p3.load(audio_fname, img_fname)
     }
     select_text.addEventListener('change', update3)
