@@ -1,0 +1,288 @@
+.buttons {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 1px solid rgb(205, 208, 211);
+    overflow:hidden;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#zooms {
+    width: 100%;
+    margin-top: 25px;
+}
+
+#representations {
+    /*border-bottom: 1px solid rgb(205, 208, 211);*/
+    /*padding-bottom: 20px;*/
+    /*padding-left: 5%;*/
+    /*padding-right: 5%;*/
+    /*border-radius: 10px;*/
+    width: 80%;
+}
+
+
+
+#tier-buttons {
+    width: 60%;
+}
+
+#fourier-div {
+    margin: auto;
+    width: 80%;
+    /*border: 1px solid red;*/
+}
+
+
+
+
+
+
+
+#sample-text {
+    text-align: center;
+    /*font-family: "Crimson Text", serif;*/
+    font-style: italic;
+    /*font-size: 18px;*/
+    font-size: 18px;
+    display: block;
+    margin: 20px 10%;
+    width: 80%;
+
+    /*border: 1px solid red;*/
+}
+
+.zoom {
+    /*border: 1px solid red;*/
+    height: auto;
+    width: 25%;
+    display: block;
+    /*padding: 10px 10%;*/
+    /*margin: 2px;*/
+    /*border-radius: 10px;*/
+    border-right: 1px solid rgb(205, 208, 211);
+    background-color: rgb(253, 253, 254);
+    transition: .25s;
+    /*border: 1px solid red;*/
+    padding-right: 2px;
+}
+
+.zoom-selected {
+    background-color: rgb(205, 208, 211);
+}
+.zoom:hover {
+    background-color: rgba(10, 20, 30, 0.03);
+}
+.zoom-selected:hover {
+    background-color: rgb(205, 208, 211);
+}
+
+
+
+.repr-caption {
+    margin-top: 25px;
+    margin-bottom: 2px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+#multiscale {
+    position: relative;
+    /*height: 270px;*/
+    height: 0px;
+    padding-top: 50%;
+    /*width: 90%;*/
+    width: 100%;
+    margin: auto;
+    /*width: 100%;*/
+    /*--main-width: 100%;*/
+    margin-bottom: 10px;
+}
+
+#multiscale-fig {
+    width: 85%;
+}
+
+.tier-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    overflow: hidden;
+    transition: width 1.5s linear;
+}
+
+#tier-container0 {
+    width: 100%;
+
+}
+
+.tier {
+    /*width: var(--main-width);*/
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+.change-tier {
+    height: auto;
+    width: 50%;
+    display: block;
+    border-right: 1px solid rgb(205, 208, 211);
+    background-color: rgb(253, 253, 254);
+    transition: .25s;
+    padding-right: 2px;
+}
+
+
+#ar {
+    width: 90%;
+}
+
+.change-tier:last-child {
+    border: none;
+}
+.change-tier:hover {
+    background-color: rgba(10, 20, 30, 0.03);
+}
+
+.change-tier-selected {
+    background-color: rgb(205, 208, 211);
+}
+.change-tier-selected:hover {
+    background-color: rgb(205, 208, 211);
+}
+
+
+/*.slider {
+    width: 100%;
+    height: 1px;
+    border: 1px solid green;
+    background-color: red;
+    margin: 0;
+}
+*/
+
+
+.zoom:last-child {
+    border: none;
+}
+
+
+#mel-container {
+    width: 100%;
+    /*height: 200px;*/
+    height: 0px;
+    padding-top: 45%;
+    display: block;
+    position: relative;
+    /*border: 1px solid red;*/
+}
+
+#waveform-container {
+    width: 100%;
+    /*height: 200px;*/
+    height: 0px;
+    padding-top: 12%;
+/*    margin-left: 2px;
+    margin-right: 2px;*/
+    display: block;
+    position: relative;
+    /*border: 1px solid red;*/
+}
+
+#under {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#over-left {
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(253, 253, 254, 0.5);
+    transition: .5s;
+}
+
+#over-right {
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(253, 253, 254, 0.5);
+    transition: .5s;
+}
+
+#waveform {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*border: 1px solid red*/
+}
+
+#phi {
+    width: 55%;
+    margin: auto;
+}
+
+#phi-fig {
+    width: 100%;
+    height: 0px;
+    padding-top: 100%;
+    margin: auto;
+    position: relative;
+}
+
+#image2 {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #multiscale-fig {
+        width: 100%;
+    }
+
+    #representations {
+        width: 100%;
+    }
+
+    #phi {
+        width: 70%;
+    }
+
+    #sample-text {
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    #fourier-div {
+        width: 90%;
+    }
+
+    #phi {
+        width: 90%;
+    }
+
+}
