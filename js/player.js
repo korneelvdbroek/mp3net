@@ -54,7 +54,9 @@ class Player {
         this.player.load()
 
         // remove image and disable play button
-        this.demo_img.setAttribute("src", "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=")
+        this.demo_img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+        this.demo_img.width = 0
+        this.demo_img.height = 0
         this.playpause.disabled = true
 
         // fetch data
@@ -62,7 +64,6 @@ class Player {
           .then(response => response.arrayBuffer())
           .then(text => {
             this.mat = this.parse(text);
-            console.log(this.mat)
             this.playpause.disabled = false;
             this.redrawPlayer();
         })
