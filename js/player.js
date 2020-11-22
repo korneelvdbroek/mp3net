@@ -155,7 +155,6 @@ class Player {
 
             var f = global_frac * this.mat.length
             var tstep = Math.min(Math.floor(f), this.mat.length - 2)
-            console.log(global_frac, this.mat.length, tstep)
             var heights = this.mat[tstep]
             var bar_width = (this.canvas.width / heights.length) - 1
 
