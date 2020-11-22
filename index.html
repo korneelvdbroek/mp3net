@@ -94,8 +94,8 @@ The samples presented here are after 105h training on a single TPUv2.
                             </svg>
                         </button>
                         <audio id='play-1' class='play'>
-                            <source id='src1' src='samples/sample-0.ogg' type='audio/ogg'>
-                            <source id='src2' src='samples/sample-0.wav' type='audio/wav'>
+                            <source id='src1' src='samples/fake_sample0_238000.ogg' type='audio/ogg'>
+                            <source id='src2' src='samples/fake_sample0_238000.wav' type='audio/wav'>
                         </audio>
                         <div class='response'>
                             <canvas class='response-canvas'></canvas>
@@ -119,7 +119,7 @@ The samples presented here are after 105h training on a single TPUv2.
 
 <script>
     var player = new Player('player')
-    player.loadAndRedraw('samples/sample-0', 'samples/sample-0.png')
+    player.loadAndRedraw('samples/fake_sample0_238000', 'samples/fake_sample0_238000.png')
 
     var select_sample = document.querySelector('#select-sample')
 
