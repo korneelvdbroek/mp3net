@@ -57,7 +57,6 @@ class Player {
         this.player.querySelector('#src1').setAttribute("src", audio_fname + '.ogg')
         this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
         this.player.load()  // load() function of <audio> element
-        this.player.currentTime = 0.0
 
         this.demo_img.setAttribute("src", img_fname)
 
@@ -68,7 +67,8 @@ class Player {
             this.mat = this.parse(text);
             this.playpause.disabled = false;
             this.demo_img.style.display = 'inline'
-
+            
+            this.player.currentTime = 0.0
             this.redraw();
         })
 
