@@ -43,22 +43,21 @@ class Player {
         this.playpause.onclick = togglePlayPause;
     }
 
-    load(audio_fname, img_fname) {
+    loadAndRedraw(audio_fname, img_fname) {
         // stop on-going animation
         this.pause()
         window.cancelAnimationFrame(this.progress)
 
-        // reload player
-        this.player.querySelector('#src1').setAttribute("src", audio_fname + '.ogg')
-        this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
-        this.player.load()
-
         // remove image, disable play button and player
         this.demo_img.style.display = 'none'
         this.playpause.disabled = true
-        if (this.mat[0].length > 0) {
-            this.redrawPlayer(true)
-        }
+        this.redrawPlayer(true)
+
+        // reload player
+        this.player.querySelector('#src1').setAttribute("src", audio_fname + '.ogg')
+        this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
+        this.player.load()  // load() function of <audio> element
+        this.global_frac = 0.0
 
         this.demo_img.setAttribute("src", img_fname)
 
@@ -145,31 +144,35 @@ class Player {
     }
 
     redrawPlayer(greyedOut = false) {
-        this.canvas.width = window.devicePixelRatio*this.response_container.offsetWidth;
-        this.canvas.height = window.devicePixelRatio*this.response_container.offsetHeight;
+        // only redraw when there is information to redraw
+        if (this.mat.length > 1) {
+            this.canvas.width = window.devicePixelRatio*this.response_container.offsetWidth;
+            this.canvas.height = window.devicePixelRatio*this.response_container.offsetHeight;
 
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.canvas.style.width = (this.canvas.width / window.devicePixelRatio).toString() + "px";
-        this.canvas.style.height = (this.canvas.height / window.devicePixelRatio).toString() + "px";
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+            this.canvas.style.width = (this.canvas.width / window.devicePixelRatio).toString() + "px";
+            this.canvas.style.height = (this.canvas.height / window.devicePixelRatio).toString() + "px";
 
-        var f = this.global_frac*this.mat.length
-        var tstep = Math.min(Math.floor(f), this.mat.length - 2)
-        var heights = this.mat[tstep]
-        var bar_width = (this.canvas.width / heights.length) - 1
+            var f = this.global_frac*this.mat.length
+            var tstep = Math.min(Math.floor(f), this.mat.length - 2)
+            console.log(this.global_frac, this.mat.length, tstep)
+            var heights = this.mat[tstep]
+            var bar_width = (this.canvas.width / heights.length) - 1
 
-        for (let k = 0; k < heights.length - 1; k++) {
-            var height = Math.max(Math.round((heights[k])*this.canvas.height), 3)
-            this.context.fillStyle = greyedOut? '#c8c8c8' : '#696f7b';
-            this.context.fillRect(k*(bar_width + 1), (this.canvas.height - height) / 2, bar_width, height);
+            for (let k = 0; k < heights.length - 1; k++) {
+                var height = Math.max(Math.round((heights[k])*this.canvas.height), 3)
+                this.context.fillStyle = greyedOut? '#c8c8c8' : '#696f7b';
+                this.context.fillRect(k*(bar_width + 1), (this.canvas.height - height) / 2, bar_width, height);
+            }
         }
     }
 
     cropImage(global_frac) {
-        this.imageRescalingFactor = this.demo_img.height / this.demo_img.naturalHeight
-        this.imageFullWitdh = this.imageRescalingFactor * this.demo_img.naturalWidth
-        this.objectPositionStart = this.underlay.offsetWidth / 2.
-        this.objectPositionEnd = -this.imageFullWitdh + this.underlay.offsetWidth / 2.
+        var imageRescalingFactor = this.demo_img.height / this.demo_img.naturalHeight
+        var imageFullWitdh = imageRescalingFactor * this.demo_img.naturalWidth
+        var objectPositionStart = this.underlay.offsetWidth / 2.
+        var objectPositionEnd = -imageFullWitdh + this.underlay.offsetWidth / 2.
 
-        this.demo_img.style.objectPosition = (global_frac * (this.objectPositionEnd - this.objectPositionStart) + this.objectPositionStart).toString() + 'px 0%'
+        this.demo_img.style.objectPosition = (global_frac * (objectPositionEnd - objectPositionStart) + objectPositionStart).toString() + 'px 0%'
     }
 }

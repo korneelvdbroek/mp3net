@@ -81,17 +81,16 @@
 
 <script>
     var player = new Player('player')
-    player.load('samples/sample-0', 'samples/sample-0.png')
+    player.loadAndRedraw('samples/sample-0', 'samples/sample-0.png')
 
     var select_sample = document.querySelector('#select-sample')
 
     function update() {
         var audio_fname = "samples/" + select_sample.value
         var img_fname = "samples/" + select_sample.value + ".png"
-        player.load(audio_fname, img_fname)
+        player.loadAndRedraw(audio_fname, img_fname)
     }
 
     select_sample.addEventListener('change', update)
     window.addEventListener("resize", function() {player.redraw()})
-    window.addEventListener("load", function () {player.redraw()})
 </script>
