@@ -4,6 +4,15 @@ body {
   margin: 0;
 }
 
+body {
+  color: #373737;
+  font: 12px verdana, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.625;
+}
+
+
+
 .box {
   display: flex;
   flex-flow: column;
@@ -12,29 +21,32 @@ body {
 }
 
 .box .row {
-  border:           1px solid #dcdcdc;
-  -moz-box-shadow:    0 3px 10px #bbb;
-  -webkit-box-shadow: 0 3px 10px #bbb;
-  box-shadow:         0 3px 10px #bbb;
-  padding:         10px 15% 10px 10%;
-  background-color: #f1f1f1; /* looks like grey without a blue-ish or red-ish tint */
+  padding:            0% 10% 0% 10%;
+}
+
+.panel {
+  border:             1px solid #dcdcdc;
+  box-shadow:         0 3px 10px #bbbbbb;
+  background-color:   #f1f1f1;
+}
+
+.box .row.spacer {
+  flex: 0 2 20px;
 }
 
 .box .row.header {
-  flex: 0 1 auto;
-  margin-bottom: 20px
+  flex: 1 2 20px;
 }
 
 .box .row.content {
-  flex: 1 1 auto;
-  margin-bottom: 20px
+  flex: 0 1 auto;
 }
 
 .box .row.footer {
-  flex: 0 1 40px;
+  flex: 1 2 20px;
 }
 
 img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
