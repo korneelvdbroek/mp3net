@@ -11,6 +11,8 @@ class Player {
         this.demo_img = this.container.querySelector('.underlay > img')
         this.underlay = this.container.querySelector('.underlay')
         this.playpause = this.container.querySelector(".playpause");
+        this.spectrogram = this.container.querySelector(".spectrogram")
+        this.progressbar = this.container.querySelector(".progressbar > .progress")
         this.play_img = this.container.querySelector('.play-img')
         this.pause_img = this.container.querySelector('.pause-img')
         this.canvas = this.container.querySelector('.response-canvas')
@@ -41,8 +43,13 @@ class Player {
             this.global_frac = this.player.currentTime / this.player.duration
             this.redraw();  // final redraw
         }
-        this.player.onended = () => {this.pause()}
+        this.player.onended = () => {
+            this.pause()
+            this.global_frac = this.player.currentTime / this.player.duration
+            this.redraw();  // final redraw
+        }
         this.playpause.onclick = togglePlayPause;
+        this.spectrogram.onclick = togglePlayPause;
     }
 
     loadAndRedraw(audio_fname, img_fname) {
@@ -136,11 +143,9 @@ class Player {
     }
 
     redraw() {
-        // set cropping position of image
-        this.cropImage(this.global_frac)
-
-        // draw spectrogram in player
+        this.redrawSpectrogram(this.global_frac)
         this.redrawPlayer(this.global_frac)
+        this.redrawProgressBar(this.global_frac)
     }
 
     redrawPlayer(global_frac, greyedOut = false) {
@@ -166,12 +171,15 @@ class Player {
         }
     }
 
-    cropImage(global_frac) {
-        var imageRescalingFactor = this.demo_img.height / this.demo_img.naturalHeight
-        var imageFullWitdh = imageRescalingFactor * this.demo_img.naturalWidth
+    redrawSpectrogram(global_fraction) {
+        // use .getBoundingClientRect() to get exact floating point height!
+        var imageRescalingFactor = this.demo_img.getBoundingClientRect().height / this.demo_img.naturalHeight
+        var imageFullWidth = imageRescalingFactor * this.demo_img.naturalWidth
         var objectPositionStart = this.underlay.offsetWidth / 2.
-        var objectPositionEnd = -imageFullWitdh + this.underlay.offsetWidth / 2.
+        this.demo_img.style.objectPosition = (-global_fraction * imageFullWidth + objectPositionStart).toString() + 'px 0%'
+    }
 
-        this.demo_img.style.objectPosition = (global_frac * (objectPositionEnd - objectPositionStart) + objectPositionStart).toString() + 'px 0%'
+    redrawProgressBar(global_fraction) {
+        this.progressbar.style.width = (100. * global_fraction).toString() + "%"
     }
 }
