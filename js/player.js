@@ -58,9 +58,9 @@ class Player {
         window.cancelAnimationFrame(this.progress)
 
         // remove image, disable play button and player
-        this.demo_img.style.display = 'none'
         this.playpause.disabled = true
-        this.redrawPlayer(true)
+        this.demo_img.style.display = 'none'
+        this.redrawPlayer(this.global_frac, true)  // grey out still with old global_frac
 
         // reload player
         this.player.querySelector('#src1').setAttribute("src", audio_fname + '.ogg')
