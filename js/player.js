@@ -57,7 +57,7 @@ class Player {
         this.player.querySelector('#src1').setAttribute("src", audio_fname + '.ogg')
         this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
         this.player.load()  // load() function of <audio> element
-        this.global_frac = 0.0
+        this.player.currentTime = 0.0
 
         this.demo_img.setAttribute("src", img_fname)
 
