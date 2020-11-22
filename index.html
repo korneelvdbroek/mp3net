@@ -7,159 +7,80 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/player.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/clean.css">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <header id="header" role="banner">
-        <div id="branding">
+    <div class="box">
+        <div class="row header">
         </div>
-    </header>
 
-    <div id="page" class="hfeed">  <!-- is closed in footer.php ;-) -->
-      	<div id="main">
-		    <div id="primary">
-                <div id="content" role="main">
-                    <article id="post-0" class="exhibit post-0 post type-post status-publish format-standard hentry category-uncategorized tag-data-visualization tag-map">
+        <div class="row content">  <!-- is closed in footer.php ;-) -->
+            <div id="main">
+                <div id="primary">
+                    <div id="content" role="main">
+                        <article id="post-0" class="exhibit post-0 post type-post status-publish format-standard hentry category-uncategorized tag-data-visualization tag-map">
 
-                        <header class="entry-header">
-                            <h1 class="entry-title">MP3net</h1>
-                        </header><!-- .entry-header -->
+                            <header class="entry-header">
+                                <h1 class="entry-title">MP3net</h1>
+                            </header><!-- .entry-header -->
 
 
-                        <div class="img_container_wide">
+                            <div class="img_container_wide">
 
-                        <div id='demo-3' class='demo'>
+                            <div id='demo-3' class='demo'>
 
-                            <div id='player-3' class='player'>
-                                <div class='controls'>
-                                    <p>
-                                        Sample:
-                                        <select id='select-sample'>
-                                          <option value="sample-0">Sample 1</option>
-                                          <option value="sample-1">Sample 2</option>
-                                        </select>
-                                    </p>
-                                </div>
-                                <div class='spectrogram'>
-                                    <div class='overline'></div>
-                                    <div class='underlay'>
-                                        <img src='samples/sample-0.png'>
+                                <div id='player-3' class='player'>
+                                    <div class='controls'>
+                                        <p>
+                                            Sample:
+                                            <select id='select-sample'>
+                                              <option value="sample-0">Sample 1</option>
+                                              <option value="sample-1">Sample 2</option>
+                                            </select>
+                                        </p>
                                     </div>
-                                </div>
-                                <div class='audio-controls'>
-                                    <button id="playpause" disabled class='playpause' title="play">
-                                        <svg class='play-img' width="14px" height="19px" viewBox="0 0 14 19">
-                                            <polygon id="Triangle" fill="#000000" transform="translate(9, 9.5) rotate(90) translate(-7, -9.5) " points="7 2.5 16.5 16.5 -2.5 16.5"></polygon>
-                                        </svg>
-                                        <svg class='pause-img' width="16px" height="19px" viewBox="0 0 16 19">
-                                            <g fill="#000000" stroke="#000000">
-                                                <rect id="Rectangle" x="0.5" y="0.5" width="4" height="18"></rect>
-                                                <rect id="Rectangle" x="11.5" y="0.5" width="4" height="18"></rect>
-                                            </g>
-                                        </svg>
-                                    </button>
-                                    <audio id='play-1' class='play'>
-                                        <source id='src1' src='samples/sample-0.ogg' type='audio/ogg'>
-                                        <source id='src2' src='samples/sample-0.wav' type='audio/wav'>
-                                    </audio>
-                                    <div class='response'>
-                                        <canvas class='response-canvas'></canvas>
+                                    <div class='spectrogram'>
+                                        <div class='overline'></div>
+                                        <div class='underlay'>
+                                            <img src='samples/sample-0.png'>
+                                        </div>
+                                    </div>
+                                    <div class='audio-controls'>
+                                        <button id="playpause" disabled class='playpause' title="play">
+                                            <svg class='play-img' width="14px" height="19px" viewBox="0 0 14 19">
+                                                <polygon id="Triangle" fill="#000000" transform="translate(9, 9.5) rotate(90) translate(-7, -9.5) " points="7 2.5 16.5 16.5 -2.5 16.5"></polygon>
+                                            </svg>
+                                            <svg class='pause-img' width="16px" height="19px" viewBox="0 0 16 19">
+                                                <g fill="#000000" stroke="#000000">
+                                                    <rect id="Rectangle" x="0.5" y="0.5" width="4" height="18"></rect>
+                                                    <rect id="Rectangle" x="11.5" y="0.5" width="4" height="18"></rect>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <audio id='play-1' class='play'>
+                                            <source id='src1' src='samples/sample-0.ogg' type='audio/ogg'>
+                                            <source id='src2' src='samples/sample-0.wav' type='audio/wav'>
+                                        </audio>
+                                        <div class='response'>
+                                            <canvas class='response-canvas'></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    <footer id="colophon" role="contentinfo">
-	</footer><!-- #colophon -->
-
-    </div>
-
-
-
-
-<!--    <div id='first' class='full-width'>
-        <div class='intro-demo'>
-            <div class='intro'>
-                <p>
-                    MP3net
-                </p>
-                <p>
-                    <strong>Demo:</strong> Select a sample
-                </p>
-            </div>
-            <div id='demo-3' class='demo'>
-                <div id='player-3' class='player'>
-                    <div class='controls'>
-                        <p>
-                            Speaker:
-                            <select id='select-sample'>
-                              <option value="sample-0">Sample 1</option>
-                              <option value="sample-1">Sample 2</option>
-                            </select>
-                        </p>
-                    </div>
-                    <div class='spectrogram'>
-                        <div class='overline'></div>
-                        <div class='underlay'>
-                            <img src='samples/sample-0.png'>
-                        </div>
-                    </div>
-                    <div class='audio-controls'>
-                        <button id="playpause" disabled class='playpause' title="play">
-                            <svg class='play-img' width="14px" height="19px" viewBox="0 0 14 19">
-                                <polygon id="Triangle" fill="#000000" transform="translate(9, 9.5) rotate(90) translate(-7, -9.5) " points="7 2.5 16.5 16.5 -2.5 16.5"></polygon>
-                            </svg>
-                            <svg class='pause-img' width="16px" height="19px" viewBox="0 0 16 19">
-                                <g fill="#000000" stroke="#000000">
-                                    <rect id="Rectangle" x="0.5" y="0.5" width="4" height="18"></rect>
-                                    <rect id="Rectangle" x="11.5" y="0.5" width="4" height="18"></rect>
-                                </g>
-                            </svg>
-                        </button>
-                        <audio id='play-1' class='play'>
-                            <source id='src1' src='samples/sample-0.ogg' type='audio/ogg'>
-                            <source id='src2' src='samples/sample-0.wav' type='audio/wav'>
-                        </audio>
-                        <div class='response'>
-                            <canvas class='response-canvas'></canvas>
-                        </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
--->
-    <!--
-    <div class='section'>
-        <h2>The Frequency Domain</h2>
-        <p>
-        We begin with a brief primer on time and frequency representations of audio.
-        A signal has equivalent representations in the time domain and the frequency domain.  This notion is pervasive in the analysis of highly periodic signals such as audio waveforms.  In the time domain, audio is represented as a one-dimensional waveform&mdash;amplitude as a function of time.  By way of the Fourier transform, this waveform can be decomposed into a sum of periodic signals.  The amplitudes and frequencies of these periodic signals constitute the waveform's frequency-domain representation, which is visualized in the animation below:
-        </p>
 
-        <div class='fig-container'>
-            <figure id='fourier-div'>
-                <img id='fourier' src='../../figures/fourier4.gif'>
-            </figure>
-
-            <figcaption>
-                <p class='caption'>
-                A visualization of the relationship between a function in the <span style='color: rgb(189, 41, 32);'>time domain</span> and the <span style='color: rgb(37, 94, 182);'>frequency domain</span>. The time-domain waveform can be represented as a weighted sum of periodic functions of varying frequencies. [<a target='_blank' href='https://en.wikipedia.org/wiki/Frequency_domain#/media/File:Fourier_transform_time_and_frequency_domains_(small).gif'>Image source</a>]
-                </p>
-            </figcaption>
+        <div class="row footer">
         </div>
-
     </div>
-
-    <hr>-->
 
 </body>
 </html>
