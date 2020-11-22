@@ -14,10 +14,10 @@ body {
 
 
 .box {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-  padding: 0% 10% 0% 10%;
+  display:            flex;
+  flex-flow:          column;
+  height:             100%;
+  padding:            0% 10% 0% 10%;
 }
 
 .box .row {

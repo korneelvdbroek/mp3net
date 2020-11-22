@@ -5,7 +5,7 @@ class Player {
         this.global_frac = 0.0
         this.container = document.getElementById(container)
         this.progress = null;
-        this.mat = [[]]
+        this.mat = [[0.0, 0.0], [0.0, 0.0]]
 
         this.player = this.container.querySelector('audio')
         this.demo_img = this.container.querySelector('.underlay > img')
@@ -17,7 +17,6 @@ class Player {
         this.response_container = this.container.querySelector('.response')
         this.context = this.canvas.getContext('2d');
 
-        // console.log(this.player.duration)
         var togglePlayPause = () => {
             if (this.player.networkState !== 1) {
                 return
@@ -29,18 +28,8 @@ class Player {
             }
         }
 
-        this.update = () => {
-            this.global_frac = this.player.currentTime / this.player.duration
-
-            // set cropping position of image
-            this.cropImage(this.global_frac)
-
-            // draw spectrogram in player
-            this.redraw()
-        }
-
         this.updateLoop = (timestamp) => {
-            this.update()
+            this.redraw()
             this.progress = window.requestAnimationFrame(this.updateLoop)
         }
 
@@ -55,23 +44,32 @@ class Player {
     }
 
     load(audio_fname, img_fname) {
+        // stop on-going animation
         this.pause()
         window.cancelAnimationFrame(this.progress)
-        this.playpause.disabled = true
 
+        // reload player
         this.player.querySelector('#src1').setAttribute("src", audio_fname + '.ogg')
         this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
         this.player.load()
-        this.demo_img.setAttribute("src", img_fname)
-        this.cropImage(0)
 
+        // remove image and disable play button
+        this.demo_img.setAttribute("src", "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=")
+        this.playpause.disabled = true
+
+        // fetch data
         fetch(img_fname)
           .then(response => response.arrayBuffer())
           .then(text => {
             this.mat = this.parse(text);
+            console.log(this.mat)
             this.playpause.disabled = false;
-            this.redraw();
+            this.redrawPlayer();
         })
+
+        // put image back
+        this.demo_img.setAttribute("src", img_fname)
+        this.cropImage(0)
     }
 
     parse(buffer) {
@@ -134,6 +132,16 @@ class Player {
     }
 
     redraw() {
+        this.global_frac = this.player.currentTime / this.player.duration
+
+        // set cropping position of image
+        this.cropImage(this.global_frac)
+
+        // draw spectrogram in player
+        this.redrawPlayer()
+    }
+
+    redrawPlayer(greyedOut = false) {
         this.canvas.width = window.devicePixelRatio*this.response_container.offsetWidth;
         this.canvas.height = window.devicePixelRatio*this.response_container.offsetHeight;
 
@@ -148,7 +156,7 @@ class Player {
 
         for (let k = 0; k < heights.length - 1; k++) {
             var height = Math.max(Math.round((heights[k])*this.canvas.height), 3)
-            this.context.fillStyle = '#696f7b';
+            this.context.fillStyle = greyedOut? '#c8c8c8' : '#696f7b';
             this.context.fillRect(k*(bar_width + 1), (this.canvas.height - height) / 2, bar_width, height);
         }
     }

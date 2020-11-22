@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/player.css">
-    <link rel="stylesheet" type="text/css" href="css/clean.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,47 +27,42 @@
                 </header><!-- .entry-header -->
 
 
-                <div class="img_container_wide">
-
-                <div id='demo-3' class='demo'>
-                    <div id='player-3' class='player'>
-                        <div class='controls'>
-                            <p>
-                                Sample:
-                                <select id='select-sample'>
-                                  <option value="sample-0">Sample 1</option>
-                                  <option value="sample-1">Sample 2</option>
-                                </select>
-                            </p>
-                        </div>
-                        <div class='spectrogram'>
-                            <div class='overline'></div>
-                            <div class='underlay'>
-                                <img src='samples/sample-0.png'>
-                            </div>
-                        </div>
-                        <div class='audio-controls'>
-                            <button id="playpause" disabled class='playpause' title="play">
-                                <svg class='play-img' width="14px" height="19px" viewBox="0 0 14 19">
-                                    <polygon id="Triangle" fill="#000000" transform="translate(9, 9.5) rotate(90) translate(-7, -9.5) " points="7 2.5 16.5 16.5 -2.5 16.5"></polygon>
-                                </svg>
-                                <svg class='pause-img' width="16px" height="19px" viewBox="0 0 16 19">
-                                    <g fill="#000000" stroke="#000000">
-                                        <rect id="Rectangle" x="0.5" y="0.5" width="4" height="18"></rect>
-                                        <rect id="Rectangle" x="11.5" y="0.5" width="4" height="18"></rect>
-                                    </g>
-                                </svg>
-                            </button>
-                            <audio id='play-1' class='play'>
-                                <source id='src1' src='samples/sample-0.ogg' type='audio/ogg'>
-                                <source id='src2' src='samples/sample-0.wav' type='audio/wav'>
-                            </audio>
-                            <div class='response'>
-                                <canvas class='response-canvas'></canvas>
-                            </div>
+                <div id='player' class='player'>
+                    <div class='controls'>
+                        <p>
+                            Sample:
+                            <select id='select-sample'>
+                              <option value="sample-0">Sample 1</option>
+                              <option value="sample-1">Sample 2</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class='spectrogram'>
+                        <div class='crosshair'></div>
+                        <div class='underlay'>
+                            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="0" height="0" alt="" />
                         </div>
                     </div>
-                </div>
+                    <div class='audio-controls'>
+                        <button id="playpause" disabled class='playpause' title="play">
+                            <svg class='play-img' width="14px" height="19px" viewBox="0 0 14 19">
+                                <polygon id="Triangle" fill="#000000" transform="translate(9, 9.5) rotate(90) translate(-7, -9.5) " points="7 2.5 16.5 16.5 -2.5 16.5"></polygon>
+                            </svg>
+                            <svg class='pause-img' width="16px" height="19px" viewBox="0 0 16 19">
+                                <g fill="#000000" stroke="#000000">
+                                    <rect id="Rectangle" x="0.5" y="0.5" width="4" height="18"></rect>
+                                    <rect id="Rectangle" x="11.5" y="0.5" width="4" height="18"></rect>
+                                </g>
+                            </svg>
+                        </button>
+                        <audio id='play-1' class='play'>
+                            <source id='src1' src='samples/sample-0.ogg' type='audio/ogg'>
+                            <source id='src2' src='samples/sample-0.wav' type='audio/wav'>
+                        </audio>
+                        <div class='response'>
+                            <canvas class='response-canvas'></canvas>
+                        </div>
+                    </div>
                 </div>
             </article>
         </div>
@@ -85,16 +80,19 @@
 <script src="js/player.js"></script>
 
 <script>
-    var p3 = new Player('player-3')
-    p3.load('samples/sample-0', 'samples/sample-0.png')
+    var player = new Player('player')
+    player.load('samples/sample-0', 'samples/sample-0.png')
 
     var select_sample = document.querySelector('#select-sample')
 
-    function update3() {
+    function update() {
         var audio_fname = "samples/" + select_sample.value
         var img_fname = "samples/" + select_sample.value + ".png"
-        p3.load(audio_fname, img_fname)
+        player.redrawPlayer(true)
+        player.load(audio_fname, img_fname)
     }
-    select_sample.addEventListener('change', update3)
-    window.addEventListener("resize", function() {p3.redraw()})
+
+    select_sample.addEventListener('change', update)
+    window.addEventListener("resize", function() {player.redraw()})
+    window.addEventListener("load", function () {player.redraw()})
 </script>

@@ -23,7 +23,6 @@
     margin-top: 20px;
     /*border: 1px solid black;*/
     border-radius: 30px;
-
 }
 
 .play-img {
@@ -43,23 +42,19 @@
 .playpause {
     margin:11px 11px 11px 11px;
     width: 32px;
-    /*min-width: 54px;*/
     height: 32px;
-    /*background-color: rgb(241, 243, 244);*/
-    background-color: rgba(0, 0, 0, 0.0);
-    /*border-right: 1px solid black;*/
-    /*border: 1px solid red;*/
     border-radius: 16px;
-    color: black;
-    transition: 0.25s;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-color: rgba(0, 0, 0, 1.0);
 }
 
-/*.playpause:disabled {
-    background-color: red;
-}*/
+.playpause:disabled {
+    background-color: rgba(10, 20, 30, 0.15);  /* darker background */
+    border-color: rgba(200, 200, 200, 1.0);   /* greyed out border */
+}
 
 .playpause:hover {
-    background-color: rgba(10, 20, 30, 0.03);
+    background-color: rgba(10, 20, 30, 0.05); /* darker background */
 }
 
 .playpause:focus {
@@ -95,7 +90,7 @@
     object-position: 0% 0%;
 }
 
-.overline {
+.crosshair {
     width: 50%;
     height:100%;
     top: 0;
