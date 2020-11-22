@@ -29,6 +29,7 @@ class Player {
         }
 
         this.updateLoop = (timestamp) => {
+            this.global_frac = this.player.currentTime / this.player.duration
             this.redraw()
             this.progress = window.requestAnimationFrame(this.updateLoop)
         }
@@ -37,6 +38,7 @@ class Player {
         this.player.onplay = this.updateLoop
         this.player.onpause = () => {
             window.cancelAnimationFrame(this.progress)
+            this.global_frac = this.player.currentTime / this.player.duration
             this.redraw();  // final redraw
         }
         this.player.onended = () => {this.pause()}
@@ -67,8 +69,8 @@ class Player {
             this.mat = this.parse(text);
             this.playpause.disabled = false;
             this.demo_img.style.display = 'inline'
-            
-            this.player.currentTime = 0.0
+
+            this.global_frac = 0.0
             this.redraw();
         })
 
@@ -134,16 +136,14 @@ class Player {
     }
 
     redraw() {
-        this.global_frac = this.player.currentTime / this.player.duration
-
         // set cropping position of image
         this.cropImage(this.global_frac)
 
         // draw spectrogram in player
-        this.redrawPlayer()
+        this.redrawPlayer(this.global_frac)
     }
 
-    redrawPlayer(greyedOut = false) {
+    redrawPlayer(global_frac, greyedOut = false) {
         // only redraw when there is information to redraw
         if (this.mat.length > 1) {
             this.canvas.width = window.devicePixelRatio*this.response_container.offsetWidth;
@@ -153,9 +153,9 @@ class Player {
             this.canvas.style.width = (this.canvas.width / window.devicePixelRatio).toString() + "px";
             this.canvas.style.height = (this.canvas.height / window.devicePixelRatio).toString() + "px";
 
-            var f = this.global_frac*this.mat.length
+            var f = global_frac * this.mat.length
             var tstep = Math.min(Math.floor(f), this.mat.length - 2)
-            console.log(this.global_frac, this.mat.length, tstep)
+            console.log(global_frac, this.mat.length, tstep)
             var heights = this.mat[tstep]
             var bar_width = (this.canvas.width / heights.length) - 1
 
