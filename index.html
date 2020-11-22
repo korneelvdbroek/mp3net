@@ -40,7 +40,7 @@
                     <div class='spectrogram'>
                         <div class='crosshair'></div>
                         <div class='underlay'>
-                            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="0" height="0" alt="" />
+                            <img id="image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="0" height="0" alt="" />
                         </div>
                     </div>
                     <div class='audio-controls'>
@@ -88,7 +88,6 @@
     function update() {
         var audio_fname = "samples/" + select_sample.value
         var img_fname = "samples/" + select_sample.value + ".png"
-        player.redrawPlayer(true)
         player.load(audio_fname, img_fname)
     }
 

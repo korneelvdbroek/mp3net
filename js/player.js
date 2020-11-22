@@ -5,7 +5,7 @@ class Player {
         this.global_frac = 0.0
         this.container = document.getElementById(container)
         this.progress = null;
-        this.mat = [[0.0, 0.0], [0.0, 0.0]]
+        this.mat = [[]]
 
         this.player = this.container.querySelector('audio')
         this.demo_img = this.container.querySelector('.underlay > img')
@@ -37,7 +37,7 @@ class Player {
         this.player.onplay = this.updateLoop
         this.player.onpause = () => {
             window.cancelAnimationFrame(this.progress)
-            this.update();
+            this.redraw();  // final redraw
         }
         this.player.onended = () => {this.pause()}
         this.playpause.onclick = togglePlayPause;
@@ -53,11 +53,14 @@ class Player {
         this.player.querySelector('#src2').setAttribute("src", audio_fname + '.wav')
         this.player.load()
 
-        // remove image and disable play button
-        this.demo_img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-        this.demo_img.width = 0
-        this.demo_img.height = 0
+        // remove image, disable play button and player
+        this.demo_img.style.display = 'none'
         this.playpause.disabled = true
+        if (this.mat[0].length > 0) {
+            this.redrawPlayer(true)
+        }
+
+        this.demo_img.setAttribute("src", img_fname)
 
         // fetch data
         fetch(img_fname)
@@ -65,12 +68,11 @@ class Player {
           .then(text => {
             this.mat = this.parse(text);
             this.playpause.disabled = false;
-            this.redrawPlayer();
+            this.demo_img.style.display = 'inline'
+
+            this.redraw();
         })
 
-        // put image back
-        this.demo_img.setAttribute("src", img_fname)
-        this.cropImage(0)
     }
 
     parse(buffer) {
