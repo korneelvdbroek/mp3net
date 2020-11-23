@@ -13,6 +13,7 @@ class Player {
         this.playpause = this.container.querySelector(".playpause");
         this.spectrogram = this.container.querySelector(".spectrogram")
         this.progressbar = this.container.querySelector(".progressbar > .progress")
+        this.progressbartime = this.container.querySelector(".progressbar > .tracktime")
         this.play_img = this.container.querySelector('.play-img')
         this.pause_img = this.container.querySelector('.pause-img')
         this.canvas = this.container.querySelector('.response-canvas')
@@ -181,5 +182,21 @@ class Player {
 
     redrawProgressBar(global_fraction) {
         this.progressbar.style.width = (100. * global_fraction).toString() + "%"
+        this.progressbartime.innerHTML = this.printTime(this.player.currentTime) + ' / ' + this.printTime(this.player.duration)
+    }
+
+    printTime(seconds) {
+        var time = Math.floor(seconds)
+        var minutes = Math.floor(time / 60)
+        var seconds = time % 60
+
+        var timeString;
+        if (seconds < 10) {
+          timeString = minutes.toString() + ":0" + seconds.toString()
+        } else {
+          timeString = minutes.toString() + ":" + seconds.toString()
+        }
+
+        return timeString
     }
 }

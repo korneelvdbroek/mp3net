@@ -30,6 +30,13 @@
     transition: 0.25s;
 }
 
+.tracktime {
+    display: none;
+    margin-left: 2px;
+    color: rgb(241, 241, 241);
+    transition: 0.5s;
+}
+
 .progress {
     width: 0%;
     height: 2px;
@@ -44,6 +51,10 @@
 
 .progressbar:hover .progress {
     height: 5px;
+}
+
+.progressbar:hover .tracktime {
+    display: inline;
 }
 
 .audio-controls {
