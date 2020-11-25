@@ -55,6 +55,7 @@ The samples presented here are after 105h training on a single TPUv2.
                         <p>
                             Select an (uncurated) generated audio sample. The number indicates the model iteration:
                             <select id='select-sample'>
+                                <option value="fake_sample0_319000">Sample 1 - 319000</option>
                                 <option value="fake_sample0_314000">Sample 1 - 314000</option>
                                 <option value="fake_sample0_311000">Sample 1 - 311000</option>
                                 <option value="fake_sample0_299000">Sample 1 - 299000</option>
@@ -95,8 +96,8 @@ The samples presented here are after 105h training on a single TPUv2.
                             </svg>
                         </button>
                         <audio id='play-1' class='play'>
-                            <source id='src1' src='samples/fake_sample0_314000.ogg' type='audio/ogg'>
-                            <source id='src2' src='samples/fake_sample0_314000.wav' type='audio/wav'>
+                            <source id='src1' src='samples/fake_sample0_319000.ogg' type='audio/ogg'>
+                            <source id='src2' src='samples/fake_sample0_319000.wav' type='audio/wav'>
                         </audio>
                         <div class='response'>
                             <canvas class='response-canvas'></canvas>
@@ -120,7 +121,7 @@ The samples presented here are after 105h training on a single TPUv2.
 
 <script>
     var player = new Player('player')
-    player.loadAndRedraw('samples/fake_sample0_314000', 'samples/fake_sample0_314000.png')
+    player.loadAndRedraw('samples/fake_sample0_319000', 'samples/fake_sample0_319000.png')
 
     var select_sample = document.querySelector('#select-sample')
 
