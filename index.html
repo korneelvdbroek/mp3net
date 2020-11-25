@@ -55,21 +55,21 @@ The samples presented here are after 105h training on a single TPUv2.
                         <p>
                             Select an (uncurated) generated audio sample. The number indicates the model iteration:
                             <select id='select-sample'>
-                                <option value="fake_sample0_238000">Sample 1 - 238000</option>
-                                <option value="fake_sample0_239000">Sample 1 - 239000</option>
-                                <option value="fake_sample0_241000">Sample 1 - 241000</option>
-                                <option value="fake_sample0_242000">Sample 1 - 242000</option>
-                                <option value="fake_sample0_243000">Sample 1 - 243000</option>
-                                <option value="fake_sample1_238000">Sample 2 - 238000</option>
-                                <option value="fake_sample1_239000">Sample 2 - 239000</option>
-                                <option value="fake_sample1_241000">Sample 2 - 241000</option>
-                                <option value="fake_sample1_242000">Sample 2 - 242000</option>
-                                <option value="fake_sample1_243000">Sample 2 - 243000</option>
-                                <option value="fake_sample2_238000">Sample 3 - 238000</option>
-                                <option value="fake_sample2_239000">Sample 3 - 239000</option>
-                                <option value="fake_sample2_241000">Sample 3 - 241000</option>
-                                <option value="fake_sample2_242000">Sample 3 - 242000</option>
-                                <option value="fake_sample2_243000">Sample 3 - 243000</option>
+                                <option value="fake_sample0_319000">Sample 1 - 319000</option>
+                                <option value="fake_sample0_314000">Sample 1 - 314000</option>
+                                <option value="fake_sample0_311000">Sample 1 - 311000</option>
+                                <option value="fake_sample0_299000">Sample 1 - 299000</option>
+                                <option value="fake_sample0_293000">Sample 1 - 293000</option>
+                                <option value="fake_sample1_319000">Sample 2 - 319000</option>
+                                <option value="fake_sample1_314000">Sample 2 - 314000</option>
+                                <option value="fake_sample1_311000">Sample 2 - 311000</option>
+                                <option value="fake_sample1_299000">Sample 2 - 299000</option>
+                                <option value="fake_sample1_293000">Sample 2 - 293000</option>
+                                <option value="fake_sample2_319000">Sample 3 - 319000</option>
+                                <option value="fake_sample2_314000">Sample 3 - 314000</option>
+                                <option value="fake_sample2_311000">Sample 3 - 311000</option>
+                                <option value="fake_sample2_299000">Sample 3 - 299000</option>
+                                <option value="fake_sample2_293000">Sample 3 - 293000</option>
                             </select>
                         </p>
                     </div>
@@ -96,8 +96,8 @@ The samples presented here are after 105h training on a single TPUv2.
                             </svg>
                         </button>
                         <audio id='play-1' class='play'>
-                            <source id='src1' src='samples/fake_sample0_238000.ogg' type='audio/ogg'>
-                            <source id='src2' src='samples/fake_sample0_238000.wav' type='audio/wav'>
+                            <source id='src1' src='samples/fake_sample0_319000.ogg' type='audio/ogg'>
+                            <source id='src2' src='samples/fake_sample0_319000.wav' type='audio/wav'>
                         </audio>
                         <div class='response'>
                             <canvas class='response-canvas'></canvas>
@@ -121,7 +121,7 @@ The samples presented here are after 105h training on a single TPUv2.
 
 <script>
     var player = new Player('player')
-    player.loadAndRedraw('samples/fake_sample0_238000', 'samples/fake_sample0_238000.png')
+    player.loadAndRedraw('samples/fake_sample0_319000', 'samples/fake_sample0_319000.png')
 
     var select_sample = document.querySelector('#select-sample')
 
