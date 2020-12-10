@@ -54,7 +54,58 @@ The samples presented here are after 105h training on a single TPUv2.
                     <div class='controls'>
                         <p>
                             Select an (uncurated) generated audio sample. The number indicates the model iteration:
-                            <select id='select-sample'>
+                            <form name="selectorForm">
+                                <table>
+                                    <tr>
+                                        <td><b>Generated samples</b></td>
+                                        <td><b>Real samples</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="selectSample" value="fake_sample0_319000" checked />
+                                                fake_sample0_319000<br>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="selectSample" value="fake_sample1_319000" />
+                                                fake_sample1_319000<br>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="selectSample" value="fake_sample0_314000" />
+                                                fake_sample0_314000<br>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="selectSample" value="fake_sample1_314000" />
+                                                fake_sample1_314000<br>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="selectSample" value="fake_sample0_311000" />
+                                                fake_sample0_311000<br>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label>
+                                                <input type="radio" name="selectSample" value="fake_sample1_311000" />
+                                                fake_sample1_311000<br>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+
+<!---                            <select id='select-sample'>
                                 <option value="fake_sample0_319000">Sample 1 - 319000</option>
                                 <option value="fake_sample0_314000">Sample 1 - 314000</option>
                                 <option value="fake_sample0_311000">Sample 1 - 311000</option>
@@ -70,7 +121,7 @@ The samples presented here are after 105h training on a single TPUv2.
                                 <option value="fake_sample2_311000">Sample 3 - 311000</option>
                                 <option value="fake_sample2_299000">Sample 3 - 299000</option>
                                 <option value="fake_sample2_293000">Sample 3 - 293000</option>
-                            </select>
+                            </select> -->
                         </p>
                     </div>
                     <div class='spectrogram'>
@@ -121,16 +172,22 @@ The samples presented here are after 105h training on a single TPUv2.
 
 <script>
     var player = new Player('player')
-    player.loadAndRedraw('samples/fake_sample0_319000', 'samples/fake_sample0_319000.png')
 
-    var select_sample = document.querySelector('#select-sample')
+    var selected_sample = 'fake_sample0_319000'
 
     function update() {
-        var audio_fname = "samples/" + select_sample.value
-        var img_fname = "samples/" + select_sample.value + ".png"
+        var audio_fname = "samples/" + selected_sample
+        var img_fname = "samples/" + selected_sample + ".png"
         player.loadAndRedraw(audio_fname, img_fname)
     }
 
-    select_sample.addEventListener('change', update)
+    var selector = document.selectorForm.selectSample
+    for (var i = 0; i < selector.length; i++) {
+        selector[i].addEventListener('change', function() {
+            selected_sample = this.value;
+            update();
+        });
+    }
     window.addEventListener("resize", function() {player.redraw()})
+    window.addEventListener("load", update);
 </script>
