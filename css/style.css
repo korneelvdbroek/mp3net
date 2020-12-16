@@ -50,3 +50,11 @@ img {
   width: 100%;
   height: 100%;
 }
+
+.sample-selection {
+  width: 100%;
+}
+
+.sample-selection td {
+  width: 25%;
+}

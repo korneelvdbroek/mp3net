@@ -52,77 +52,147 @@ The samples presented here are after 105h training on a single TPUv2.
 
                 <div id='player' class='player'>
                     <div class='controls'>
-                        <p>
-                            Select an (uncurated) generated audio sample. The number indicates the model iteration:
-                            <form name="selectorForm">
-                                <table>
-                                    <tr>
-                                        <td><b>Generated samples</b></td>
-                                        <td><b>Real samples</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="radio" name="selectSample" value="fake_sample0_319000" checked />
-                                                fake_sample0_319000<br>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label>
-                                                <input type="radio" name="selectSample" value="fake_sample1_319000" />
-                                                fake_sample1_319000<br>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="radio" name="selectSample" value="fake_sample0_314000" />
-                                                fake_sample0_314000<br>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label>
-                                                <input type="radio" name="selectSample" value="fake_sample1_314000" />
-                                                fake_sample1_314000<br>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>
-                                                <input type="radio" name="selectSample" value="fake_sample0_311000" />
-                                                fake_sample0_311000<br>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label>
-                                                <input type="radio" name="selectSample" value="fake_sample1_311000" />
-                                                fake_sample1_311000<br>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
-
-<!---                            <select id='select-sample'>
-                                <option value="fake_sample0_319000">Sample 1 - 319000</option>
-                                <option value="fake_sample0_314000">Sample 1 - 314000</option>
-                                <option value="fake_sample0_311000">Sample 1 - 311000</option>
-                                <option value="fake_sample0_299000">Sample 1 - 299000</option>
-                                <option value="fake_sample0_293000">Sample 1 - 293000</option>
-                                <option value="fake_sample1_319000">Sample 2 - 319000</option>
-                                <option value="fake_sample1_314000">Sample 2 - 314000</option>
-                                <option value="fake_sample1_311000">Sample 2 - 311000</option>
-                                <option value="fake_sample1_299000">Sample 2 - 299000</option>
-                                <option value="fake_sample1_293000">Sample 2 - 293000</option>
-                                <option value="fake_sample2_319000">Sample 3 - 319000</option>
-                                <option value="fake_sample2_314000">Sample 3 - 314000</option>
-                                <option value="fake_sample2_311000">Sample 3 - 311000</option>
-                                <option value="fake_sample2_299000">Sample 3 - 299000</option>
-                                <option value="fake_sample2_293000">Sample 3 - 293000</option>
-                            </select> -->
-                        </p>
+                        Select an (uncurated) generated audio sample. The number indicates the model iteration:
+                        <form name="selectorForm">
+<table class='sample-selection'>
+    <tr>
+        <td><b>Selected generated samples</b></td>
+        <td><b>Uncurated generated samples</b></td>
+        <td><b>Real samples</b></td>
+        <td><b>Generated samples during training</b></td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_334000_0' checked />
+                leitmotiv 1
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_334000_0' />
+                sample 1
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='real_sample_00' />
+                real sample 1
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_087000_0' />
+                sample day 1
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_334000_1' />
+                leitmotiv 2
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_334000_1' />
+                sample 2
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='real_sample_01' />
+                real sample 2
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_125000_0' />
+                sample day 2
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_378000_0' />
+                musical phrase 1
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_378000_0' />
+                sample 3
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='real_sample_02' />
+                real sample 3
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_243000_0' />
+                sample day 3
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_378000_1' />
+                musical phrase 2
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_378000_1' />
+                sample 4
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='real_sample_03' />
+                real sample 4
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_330000_0' />
+                sample day 4
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_382500_0' />
+                musical phrase 3
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_382500_0' />
+                sample 5
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='real_sample_04' />
+                real sample 5
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type='radio' name='selectSample' value='fake_sample_334000_0' />
+                sample day 5
+            </label>
+        </td>
+    </tr>
+</table>
+                        </form>
                     </div>
                     <div class='spectrogram'>
                         <div class='crosshair'></div>
@@ -173,7 +243,7 @@ The samples presented here are after 105h training on a single TPUv2.
 <script>
     var player = new Player('player')
 
-    var selected_sample = 'fake_sample0_319000'
+    var selected_sample = 'fake_sample_334000_0'
 
     function update() {
         var audio_fname = "samples/" + selected_sample
