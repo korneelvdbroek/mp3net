@@ -31,28 +31,22 @@
                     high-quality audio tracks with long-range coherence.
                 </p>
                 <p>
-The model uses
-a Modified Discrete Cosine Transform (MDCT)
-data representation which includes all phase information. Phase generation is hence integral part
-of the model. We leverage the auditory masking
-and psychoacoustic perception limit of the human
-ear to widen the true distribution and reduce the
-model training time.
-The model architecture is
-a deep convolutional net where each subsequent
-model block stretches the data along the time axis
-and adds a higher octave. The deeper layers are
-connected with all parts of the output and have
-the context of the full track. This results in long-range coherence.
-                </p>
-                <p>
-The samples presented here are after 105h training on a single TPUv2.
-                    At this stage, the model has not yet converged and sample quality is still steadily improving.
+                    The model uses a Modified Discrete Cosine Transform (MDCT) data representation
+                    which includes all phase information. Phase generation is hence integral part
+                    of the model. We leverage the auditory masking and psychoacoustic perception
+                    limit of the human ear to widen the true distribution and stabilize the training
+                    process. The model architecture is a deep 2D convolutional network, where each
+                    subsequent generator model block increases the resolution along the time axis
+                    and adds a higher octave along the frequency axis. The deeper layers are connected
+                    with all parts of the output and have the context of the full track. This enables
+                    generation of samples which exhibit long-range coherence. We use MP3net to create
+                    95s stereo tracks with a 22kHz sample rate after training for 250h on a single TPUv2.
+                    An additional benefit of the CNN-based model architecture is that generation of new
+                    songs is almost instantaneous.
                 </p>
 
                 <div id='player' class='player'>
                     <div class='controls'>
-                        Select an (uncurated) generated audio sample. The number indicates the model iteration:
                         <form name="selectorForm">
 <table class='sample-selection'>
     <tr>
