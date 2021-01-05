@@ -8,7 +8,8 @@
     height: 0;
     width: 100%;
     position: relative;
-    padding-top: 12%;
+    /* needs to be big enough so y-axis is the determining factor in the image rescaling (object-fit: cover) */
+    padding-top: 15%;
 }
 
 .crosshair {
