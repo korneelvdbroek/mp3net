@@ -43,14 +43,20 @@
                     and adds a higher octave along the frequency axis. The deeper layers are connected
                     with all parts of the output and have the context of the full track. This enables
                     generation of samples which exhibit long-range coherence.
+                    An additional benefit of the CNN-based model architecture is that generation of new
+                    songs is almost instantaneous.
                 </p>
                 <p>
-                    We use MP3net to create
-                    95s stereo tracks with a 22kHz sample rate after training for 250h on a single Cloud TPUv2.
-                    An additional benefit of the CNN-based model architecture is that generation of new
-                    songs is almost instantaneous. We also used the same model structure with a higher number of features
-                    to generate shorter, 5s samples which exhibit better audio quality and a clearer piano timbre.
+                    We used MP3net to create 95s stereo tracks of classical piano music with a 22kHz sample rate
+                    after training for 250h on a single Cloud TPUv2. We also used the same model structure with a
+                    higher number of features to generate shorter, 5s samples which exhibit better audio quality and a clearer piano timbre.
                 </p>
+                <p>
+                    <b>Links:</b>
+                    <a href="https://arxiv.org/abs/2101.04785" target="_blank">paper</a>;
+                    <a href="https://github.com/korneelvdbroek/mp3net" target="_blank">source code</a>
+                </p>
+
 
                 <div id='player' class='player'>
                     <div class='controls'>
@@ -58,9 +64,9 @@
 <table class='sample-selection'>
     <tr>
         <td><b>Short samples (120h training)</b></td>
-        <td><b>Long samples after 250h training</b></td>
-        <td><b>Samples during Xh training</b></td>
-        <td><b>Real samples</b></td>
+        <td><b>Long samples (250h training)</b></td>
+        <td><b>Long samples during Xh training</b></td>
+        <td><b>Real training samples</b></td>
     </tr>
     <tr>
         <td>
