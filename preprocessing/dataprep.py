@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 
-"""Tools to prepare audio files to be ingested by the TranceGAN model"""
+"""Tools to prepare audio files to be ingested by the MP3net model"""
 
 import tensorflow as tf
 
