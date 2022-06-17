@@ -7,3 +7,6 @@
 
 #### System requirements:
 * MP3net requires the Python package `audiocodec`, which can be found [here](https://github.com/korneelvdbroek/audiocodec)
+
+#### Getting started
+Check out the [colab notebooks](https://github.com/korneelvdbroek/mp3net/tree/main/colab) for data preparation and training. 
